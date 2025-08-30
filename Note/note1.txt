@@ -1,0 +1,219 @@
+làm văn phòng nghỉ thứ 7 và chủ nhật
+quốc khánh nghỉ
+thứ 7, cn, thứ 2, 3
+làm 1 tháng nghỉ 1 ngày
+1 năm có 12 ngày
+sang năm thì 12 ngày nghỉ sẽ bị xóa bỏ
+cần sắp xếp lịch nghỉ hết 12 ngày trong năm để không bị lỗ
+
+deploy trên linux (cmd)
+deploy dành cho nội bộ: ip
+deploy cho 
+
+server: vps/cloud, máy thật, hosting
+domain: tên miền (.com, .org...) 
+tên xyz, online... rẻ
+
+vps việt nam
+hosting: rẻ, 
+
+https://somee.com/
+
+máy chủ để gửi email
+
+
+khi deploy (triển khai web/app lên internet cho mọi người dùng) thì dùng server (hosting, vps/cloud, máy thật)
+
+somee (chuyên asp chạy được ở VN)
+
+vps (10GB)
+100k/tháng
+ip mở port cho từng trang web
+
+vps
+
+băng thông vô hạn thì bao nhiêu lượt xem cũng được
+
+0.001 đô/h
+30GB
+60 ngàn
+
+tên miền 3 cấp
+abc.xyz.def
+tên miền 2 cấp (1 đô / năm) .online, .xyz
+abc.com
+xyz.com
+
+gmail sinh viên (gmail dành cho sinh viên, c)
+
+.org
+
+azure sinh viên
+deploy .net (c#)
+
+
+ở VN thì mới bán tên miền có chữ .vn
+
+dùng ip không cần domain đâu
+nội bộ dùng/cá nhân
+
+câu chuyện thầy kể:
+cửa hàng nhà đối diện mở quán
+
+tên của hàng.com
+
+
+làm trang blog:
+ta cài các package:
+ef core
+ef tools
+ef sql
+
+Code C# trên VSCode:
+cài gói .net vào hệ điều hành
+VSCode chỉ là trình editor code thôi (trình viết code)
+build là dùng gói .net được cài trong hệ điều hành
+
+
+học kỹ C# vì api chỉ code
+postman làm việc với api
+
+
+intell ide
+
+jetbrains để code C#
+
+wordpress (bán hàng/tin tức...)
+
+core: MVC View
+core blazor: Component Page (giống cấu trúc React framework frontend)
+Blazor dùng cơ chế component
+
+Blazor chủ yếu làm app quản lý
+
+app quản lý bệnh viện
+app quản lý công tơ điện
+app quản lý công văn
+
+blog
+mạng xã hội
+bán hàng
+
+Blazor Server/Assembly => làm web
+Blazor MAUI: app máy tính win linux mac/mobile(anroid/ios)
+
+làm User cho Admin
+
+nghỉ lễ 4 ngày:
+thứ 7, cn, thứ 2, 3
+văn phòng: + 1 vài ngày nghỉ
+xin khó khi không có lễ
+phải hoàn thành các task trước khi nghỉ (nếu không có ngày lễ bảo kê)
+
+
+Unity C#
+
+
+
+
+Required: not allowed null
+
+xóa phông xanh
+
+bài viết:
+danh mục bài viết (phân loại bài viết, admin)
+xem bài viết (user)
+tạo bài viết (admin)
+trang quản lý (admin, phải đăng nhập thì mới cho vô)
+trang user (không cần đăng nhập)
+
+tạo một blog bình thường thôi ^^
+
+Blazor Server với .net 7 (old, out of support)
+
+Blazor (chứa luôn Blazor Server): .net 8 .net 9
+
+80% game dùng Unity C#: game indie
+cocos2dx, sdl, ... C++ nó khó làm game
+
+startup, product
+freelancer (tiếng Anh, mấy ông giỏi, đã đi làm, dễ nhận job)
+có nhiều tiền thì không sao
+
+freelancer đấu giá nhiều job cùng một lúc thì may ra mới có job làm
+
+product, startup: kiếm khách hàng, người quen bên mỹ, làm web quảng cáo dịch cho cửa hàng đó, làm web phục vụ cho khách hàng
+nhận 1 job làm quản lý cafe (java)
+làm quen với 1 thầy để dễ có job hơn (nếu có quan hệ tốt thì khỏi)
+
+
+
+
+kiến thức:
+Java/C#
+Java có nhiều job hơn C#
+làm web: html css, js, C#, Java, React
+làm game: (phải có đội nhóm: vẽ 3d, code backend)
+
+làm web: nodejs (backend), rủ thêm vài bạn
+
+
+product
+liên kết
+không liên kết bảng
+cãi vì chia ra 2 phe
+
+viết sẵn câu hỏi: ctrl C V thì bị ẩn
+có link bị ẩn
+
+- nếu là c#
+asp.net core api
+react + vite (mặc định khi dùng react với .net)
+tailwindcss (optional)
+
+- nếu chuyên về javascript/typecript
+nodejs
+react
+tailwindcss
+vite
+
+
+backend/frontend
+
+winform
+CTO thấy took ok
+TechLead thì nói không, phải dùng wpf
+=> wpf
+làm member/leader lái ô tô
+
+làm cho nhà hàng Nhật
+lúc nghỉ việc, quay 180 độ...
+
+
+
+view
+page
+giao diện
+
+IIS (1 phần của hệ điều hành windows)
+docker (linux, windows)
+
+nên dùng docker để dễ dàng update chức năng
+docker deploy linux => rẻ
+...
+
+chuyển các file thành dll khi deploy
+bảo mật (IIS)
+
+docker (linux dùng console)
+ddos thuê vps sẽ có biện pháp chống ddos
+
+
+
+trong aspdotnet core thì razor là file .cshtml (c# + html)
+còn trong blazor thì là file .razor  (c# + html)
+
+
+
+
+
