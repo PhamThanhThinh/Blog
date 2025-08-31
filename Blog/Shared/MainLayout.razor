@@ -17,10 +17,10 @@
         </article>
     </main>
 </div> *@
-<div class="page d-flex">
+<div class="page d-flex flex-column">
   
   @* thanh menu, topmenu *@
-  <div class="container-fluid text-white" style="background-color: var(--color-blue)">
+  <div class="container-fluid text-white bg-blue">
     <TopMenu />
   </div>
   
@@ -29,7 +29,8 @@
     @Body
   </div>
   @* chân trang *@
-  <footer>
-    <p>Trang Blog Dùng Công Nghệ <strong>Blazor Server</strong> by <strong>PhamThanhThinh</strong></p>
+  <footer class="fixed-bottom text-center bg-dark text-white d-flex align-items-center justify-content-center">
+    @* reset css *@
+    <p class="mb-0 p-2">Trang Blog Dùng Công Nghệ <strong>Blazor Server</strong> by <strong>PhamThanhThinh</strong></p>
   </footer>
 </div>

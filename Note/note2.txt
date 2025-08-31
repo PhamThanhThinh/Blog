@@ -1,0 +1,15 @@
+http/https => có bảng console
+IIS (Internet Information Services) => không có bảng console
+
+.net
+
+linux
+jetbrain code .net (có tool hỗ trợ)
+
+CTO (80)
+
+WPF (XAML XML)
+
+
+
+

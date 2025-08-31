@@ -34,5 +34,6 @@ namespace Blog.Data.Entities
     // mã hóa mật khẩu
     [Required, MaxLength(100), Unicode(false)]
     public string Hash { get; set; }
+    // passwordhash sha...
   }
 }
