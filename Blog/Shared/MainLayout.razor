@@ -2,7 +2,7 @@
 
 <PageTitle>Blog</PageTitle>
 
-<div class="page">
+@* <div class="page">
     <div class="sidebar">
         <NavMenu />
     </div>
@@ -16,4 +16,20 @@
             @Body
         </article>
     </main>
+</div> *@
+<div class="page d-flex">
+  
+  @* thanh menu, topmenu *@
+  <div class="container-fluid text-white" style="background-color: var(--color-blue)">
+    <TopMenu />
+  </div>
+  
+  @* body *@
+  <div class="container-fluid flex-grow-1">
+    @Body
+  </div>
+  @* chân trang *@
+  <footer>
+    <p>Trang Blog Dùng Công Nghệ <strong>Blazor Server</strong> by <strong>PhamThanhThinh</strong></p>
+  </footer>
 </div>

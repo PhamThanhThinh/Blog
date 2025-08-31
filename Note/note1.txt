@@ -213,6 +213,7 @@ ddos thuê vps sẽ có biện pháp chống ddos
 trong aspdotnet core thì razor là file .cshtml (c# + html)
 còn trong blazor thì là file .razor  (c# + html)
 
+alt + f10
 
 
 
