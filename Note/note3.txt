@@ -1,0 +1,24 @@
+Web
+Mobile
+
+java: spring, android
+c#: aspdotnet, blazor MAUI
+
+các nước nói tiếng Anh layoff (sa thải) => lượng lao động cntt => các job freelancer thì chủ yếu dùng tiếng Anh => lượm hết việc rồi (toàn người giỏi, đấu giá cho job) => không cạnh tranh nổi
+=> đi làm cho công ty sướng hơn
+
+QA về trễ nhất (lương cao)
+
+java spring
+aspdotnet core mvc 
+đều dùng MVC
+
+blazor thì dùng component (giống react...) dùng page
+
+Repository
+Services
+
+instance => biểu thức (so sánh ==, ...)
+
+
+

@@ -1,27 +1,71 @@
 ﻿@page "/login"
 @using Blog.ViewModel
+@inject NavigationManager NavigationManager
 
-<EditForm Model="_loginViewModel">
-  <DataAnnotationsValidator />  @* Kích hoạt DataAnnotation validation *@
-  <ValidationSummary />        @* Hiển thị tất cả lỗi *@
-  <div class="container">
-    <div class="card">
-      <div class="card-header">Đăng Nhập</div>
-      <div class="card-body">
-        <div class="mb-3">
-          <label class="form-label">Email Đăng Nhập:</label>
-          <InputText placeholder="Nhập Email Đăng Nhập" class="form-control" @bind-Value="_loginViewModel.UserName"></InputText>
-          <ValidationMessage For="@(() => _loginViewModel.UserName)" /> @* Hiển thị lỗi cho từng field *@
+@if (loginSuccess)
+{
+  <div>Đang đăng nhập...</div>
+}
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <EditForm Model="_loginViewModel" OnValidSubmit="HandleLogin">
+        <DataAnnotationsValidator />  @* Kích hoạt DataAnnotation validation *@
+        <ValidationSummary />        @* Hiển thị tất cả lỗi *@
+        <div class="card">
+          <div class="card-header">Đăng Nhập</div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label class="form-label">Email Đăng Nhập:</label>
+              <InputText placeholder="Nhập Vào Email Đăng Nhập" class="form-control" @bind-Value="_loginViewModel.UserName"></InputText>
+              <ValidationMessage For="@(() => _loginViewModel.UserName)" /> @* Hiển thị lỗi cho từng field *@
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Mật Khẩu:</label>
+              <InputText type="password" typeof="password" placeholder="Nhập Vào Mật Khẩu" class="form-control" @bind-Value="_loginViewModel.Password"></InputText>
+              <ValidationMessage For="@(() => _loginViewModel.Password)" /> @* Hiển thị lỗi cho từng field *@
+            </div>
+
+            @if (!string.IsNullOrWhiteSpace(error))
+            {
+              <p class="text-danger">@error</p>
+            }
+
+          </div>
+
+
+          <div class="card-footer">
+            <button type="submit" class="btn btn-success btn-sm">Đăng Nhập</button>
+          </div>
         </div>
-      </div>
-      <div class="card-footer">
-        <button type="submit" class="btn btn-success btn-sm">Đăng Nhập</button>
-      </div>
+      </EditForm>
     </div>
   </div>
-</EditForm>
+</div>
 
 @code {
   private LoginViewModel _loginViewModel = new();
+  private bool loginSuccess = false;
+  private string? error = null;
 
+  private async Task HandleLogin()
+  {
+    error = null;
+    loginSuccess = true;
+
+    try
+    {
+      await Task.Delay(2000);
+      // throw new Exception("test");
+      NavigationManager.NavigateTo("/");
+    }
+    catch (Exception ex)
+    {
+      loginSuccess = false;
+      error = ex.Message;
+      throw;
+    }
+
+  }
 }
