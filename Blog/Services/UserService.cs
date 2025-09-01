@@ -26,7 +26,9 @@ namespace Blog.Services
         .AsNoTracking()
         .FirstOrDefaultAsync(u => u.Email == loginViewModel.UserName);
 
-      if (dbContextUser is not null){
+      if (dbContextUser is not null)
+      {
+        // login thành công
         return new UserLogin(dbContextUser.Id, $"{dbContextUser.FirstName} {dbContextUser.LastName}".Trim());
       }
       else
