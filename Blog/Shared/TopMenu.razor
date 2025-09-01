@@ -1,4 +1,65 @@
-﻿Top Menu
+﻿<div class="container">
+  <header class="d-flex justify-content-center justify-content-md-between py-2 flex-wrap">
+    
+    @* text-decoration-none
+      tác dụng là loại bỏ dấu gạch dưới của link
+    *@
+    <NavLink href="/" class="text-white text-decoration-none fs-4 fw-bold">
+      Blog
+    </NavLink>
+    <ul class="nav">
+      @* home *@
+      <li class="nav-item">
+        <NavLink href="/" class="text-white text-decoration-none nav-link">Trang Chủ</NavLink>
+      </li>
+      @* about *@
+      <li class="nav-item">
+        <NavLink href="/about" class="text-white text-decoration-none nav-link">Về Chúng Tôi</NavLink>
+      </li>
+      @* contact *@
+      <li class="nav-item">
+        <NavLink href="/contact" class="text-white text-decoration-none nav-link">Liên Hệ</NavLink>
+      </li>
+      <li class="nav-item">
+        <NavLink href="/category" class="text-white text-decoration-none nav-link">Quản Lý Danh Mục Bài Viết</NavLink>
+      </li>
+      <li class="nav-item">
+        <NavLink href="/post" class="text-white text-decoration-none nav-link">Quản Lý Bài Viết</NavLink>
+      </li>
+    </ul>
+
+    <div class="text-end">
+      <NavLink href="/login" class="btn btn-dark text-white text-decoration-none">Đăng Nhập</NavLink>
+    </div>
+
+  </header>
+</div>
+
+@* <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <NavLink href="/" class="navbar-brand fw-bold">
+            Blog
+        </NavLink>
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <NavLink href="/" class="nav-link" Match="NavLinkMatch.All">
+                    Trang Chủ
+                </NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink href="/about" class="nav-link">
+                    Về Chúng Tôi
+                </NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink href="/contact" class="nav-link">
+                    Liên Hệ
+                </NavLink>
+            </li>
+        </ul>
+    </nav>
+</div> *@
+
 
 @code {
 

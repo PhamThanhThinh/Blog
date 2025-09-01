@@ -1,0 +1,27 @@
+﻿@page "/login"
+@using Blog.ViewModel
+
+<EditForm Model="_loginViewModel">
+  <DataAnnotationsValidator />  @* Kích hoạt DataAnnotation validation *@
+  <ValidationSummary />        @* Hiển thị tất cả lỗi *@
+  <div class="container">
+    <div class="card">
+      <div class="card-header">Đăng Nhập</div>
+      <div class="card-body">
+        <div class="mb-3">
+          <label class="form-label">Email Đăng Nhập:</label>
+          <InputText placeholder="Nhập Email Đăng Nhập" class="form-control" @bind-Value="_loginViewModel.UserName"></InputText>
+          <ValidationMessage For="@(() => _loginViewModel.UserName)" /> @* Hiển thị lỗi cho từng field *@
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-success btn-sm">Đăng Nhập</button>
+      </div>
+    </div>
+  </div>
+</EditForm>
+
+@code {
+  private LoginViewModel _loginViewModel = new();
+
+}
