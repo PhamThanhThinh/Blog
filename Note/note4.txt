@@ -1,0 +1,18 @@
+Dispose
+
+.cshtml
+.razor
+
+category/abc-xyz
+category/sql-server
+
+
+Đăng ký, đăng nhập, đăng xuất: gọi chung là chức năng xác thực
+
+Area
+ + Admin
+ + User
+
+Page
+ + Admin
+ + trang dành cho user

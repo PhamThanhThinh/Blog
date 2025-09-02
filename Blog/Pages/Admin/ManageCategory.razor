@@ -19,10 +19,43 @@
         <th>Id</th>
         <th>Tên Danh Mục Bài Viết</th>
         <th>Slug</th>
+        <th>Chức Năng</th>
       </tr>
     </thead>
     <tbody>
-
+      @* load dữ liệu ở đây *@
+      @if (load)
+      {
+        <tr>
+          <td colspan="4">
+            Đang tải danh mục bài viết...
+          </td>
+        </tr>
+      }
+      else if (!load && categories is null)
+      {
+        <tr>
+          <td colspan="4">
+            Không có danh mục bài viết nào
+          </td>
+        </tr>
+      }
+      else
+      {
+        foreach (var item in categories)
+        {
+          <tr>
+            <td></td>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Slug</td>
+            <td>
+              @* <button type="button" class="btn btn-success" @onclick="()=>">Sửa</button> *@
+              <button type="button" class="btn btn-success">Sửa</button>
+            </td>
+          </tr>
+        }
+      }
     </tbody>
   </table>
 
