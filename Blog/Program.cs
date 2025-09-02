@@ -1,7 +1,10 @@
 ﻿using Blog.Data;
+using Blog.Services;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +12,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddScoped<AuthenService>();
+builder.Services.AddScoped<BlogAuthStateProvider>();
+builder.Services.AddTransient<UserService>();
+builder.Services.AddScoped<AuthenticationStateProvider>(
+  set => set.GetRequiredService<BlogAuthStateProvider>()
+  );
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 // đăng ký services

@@ -35,10 +35,15 @@ namespace Blog.Services
 
     };
 
-    public async Task SaveInfoUserToBrowserStorageAsync(UserLogin userLogin) =>
-      await _protectedLocalStorage
-      .SetAsync(UserStorageKey, JsonSerializer
-        .Serialize(userLogin, _jsonSerializerOptions));
+    //public async Task SaveInfoUserToBrowserStorageAsync(UserLogin userLogin) =>
+    //  await _protectedLocalStorage
+    //  .SetAsync(UserStorageKey, JsonSerializer
+    //    .Serialize(userLogin, _jsonSerializerOptions));
+    public async Task SaveInfoUserToBrowserStorageAsync(UserLogin userLogin)
+    {
+      var json = JsonSerializer.Serialize(userLogin, _jsonSerializerOptions);
+      await _protectedLocalStorage.SetAsync(UserStorageKey, json);
+    }
 
     public async Task<UserLogin?> GetInfoUserToBrowserStorageAsync()
     {

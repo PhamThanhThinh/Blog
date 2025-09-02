@@ -1,6 +1,8 @@
 ﻿@page "/login"
+@using Blog.Services
 @using Blog.ViewModel
 @inject NavigationManager NavigationManager
+@inject BlogAuthStateProvider BlogAuthStateProvider
 
 @if (loginSuccess)
 {
@@ -56,15 +58,38 @@
 
     try
     {
-      await Task.Delay(2000);
+      error = await BlogAuthStateProvider.LoginAsync(_loginViewModel);
+
+      if (!string.IsNullOrWhiteSpace(error))
+      {
+        // không đăng nhập được
+        loginSuccess = false;
+      }
+      else
+      {
+        var userLogin = BlogAuthStateProvider.UserLogin;
+        // không đăng nhập được
+        if (userLogin.IsEmpty)
+        {
+          error = "không đăng nhập được. vui lòng thử nhập lại email đăng nhập và mật khẩu";
+          loginSuccess = false;
+        }
+        // đăng nhập được
+        else
+        {
+          NavigationManager.NavigateTo("/");
+        }
+      }
+
+      //await Task.Delay(2000);
       // throw new Exception("test");
-      NavigationManager.NavigateTo("/");
+      //NavigationManager.NavigateTo("/");
     }
     catch (Exception ex)
     {
       loginSuccess = false;
       error = ex.Message;
-      throw;
+      // throw;
     }
 
   }

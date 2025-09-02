@@ -4,7 +4,7 @@ using System.Security.Claims;
 
 namespace Blog.Services
 {
-  public class BlogAuthStateProvider : AuthenticationStateProvider
+  public class BlogAuthStateProvider : AuthenticationStateProvider, IDisposable // triển khai interface IDisposable
   {
     // hằng số
     private const string BlogAuthenKey = "blog_authen";
@@ -14,7 +14,23 @@ namespace Blog.Services
     public BlogAuthStateProvider(AuthenService authenService)
     {
       _authenService = authenService;
+      AuthenticationStateChanged += BlogAuthStateProvider_AuthenStateChanged;
     }
+
+    private async void BlogAuthStateProvider_AuthenStateChanged(Task<AuthenticationState> authenticationState)
+    {
+      var state = await authenticationState;
+      if (state is not null)
+      {
+        var userId = Convert.ToInt32(state.User.FindFirstValue(ClaimTypes.NameIdentifier));
+        var name = state.User.FindFirstValue(ClaimTypes.Name);
+
+        UserLogin = new(userId, name);
+      }
+
+    }
+
+    public UserLogin UserLogin { get; private set; } = new(0, string.Empty);
 
     public override async Task<AuthenticationState> GetAuthenticationStateAsync()
     {
@@ -32,7 +48,7 @@ namespace Blog.Services
 
     }
 
-    public async Task<string> LoginAsync(LoginViewModel loginViewModel)
+    public async Task<string?> LoginAsync(LoginViewModel loginViewModel)
     {
       var userLogin = await _authenService.GetUserAsync(loginViewModel);
 
@@ -70,6 +86,7 @@ namespace Blog.Services
         );
       return new ClaimsPrincipal(identity);
     }
-
+    public void Dispose() => 
+      AuthenticationStateChanged -= BlogAuthStateProvider_AuthenStateChanged;
   }
 }

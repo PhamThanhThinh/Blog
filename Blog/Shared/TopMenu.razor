@@ -1,4 +1,8 @@
-﻿<div class="container">
+﻿@using Blog.Services
+@inject NavigationManager NavigationManager
+@inject BlogAuthStateProvider BlogAuthStateProvider
+
+<div class="container">
   <header class="d-flex justify-content-center justify-content-md-between py-2 flex-wrap">
     
     @* text-decoration-none
@@ -20,17 +24,32 @@
       <li class="nav-item">
         <NavLink href="/contact" class="text-white text-decoration-none nav-link">Liên Hệ</NavLink>
       </li>
-      <li class="nav-item">
-        <NavLink href="/category" class="text-white text-decoration-none nav-link">Quản Lý Danh Mục Bài Viết</NavLink>
-      </li>
-      <li class="nav-item">
-        <NavLink href="/post" class="text-white text-decoration-none nav-link">Quản Lý Bài Viết</NavLink>
-      </li>
+      <AuthorizeView>
+        <Authorized>
+          <li class="nav-item">
+            <NavLink href="/category" class="text-white text-decoration-none nav-link">Quản Lý Danh Mục Bài Viết</NavLink>
+          </li>
+          <li class="nav-item">
+            <NavLink href="/post" class="text-white text-decoration-none nav-link">Quản Lý Bài Viết</NavLink>
+          </li>
+        </Authorized>
+      </AuthorizeView>
     </ul>
 
     <div class="text-end">
-      <NavLink href="/login" class="btn btn-dark text-white text-decoration-none">Đăng Nhập</NavLink>
+      <AuthorizeView>
+        <Authorized>
+          <NavLink @onclick="LogoutAsync" type="button" class="btn btn-danger text-white text-decoration-none">Đăng Xuất</NavLink>
+        </Authorized>
+        <NotAuthorized>
+          @* <NavLink href="/login" class="btn btn-dark text-white text-decoration-none">Đăng Nhập</NavLink> *@
+        </NotAuthorized>
+      </AuthorizeView>
+
     </div>
+    @* <div class="text-end">
+      
+    </div> *@
 
   </header>
 </div>
@@ -62,5 +81,9 @@
 
 
 @code {
-
+  private async Task LogoutAsync()
+  {
+    await BlogAuthStateProvider.LogoutAsync();
+    NavigationManager.NavigateTo("/");
+  }
 }

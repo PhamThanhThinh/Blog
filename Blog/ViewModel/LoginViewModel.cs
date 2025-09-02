@@ -7,7 +7,7 @@ namespace Blog.ViewModel
     [Required, EmailAddress, DataType(DataType.EmailAddress)]
     public string UserName { get; set; }
 
-    [Required, MinLength(8)]
+    [Required, MinLength(1)]
     public string Password { get; set; }
   }
 }
