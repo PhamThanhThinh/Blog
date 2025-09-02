@@ -18,6 +18,8 @@ builder.Services.AddTransient<UserService>();
 builder.Services.AddScoped<AuthenticationStateProvider>(
   set => set.GetRequiredService<BlogAuthStateProvider>()
   );
+builder.Services.AddTransient<CategoryService>();
+
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 // đăng ký services

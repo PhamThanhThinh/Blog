@@ -1,0 +1,50 @@
+﻿@page "/category"
+@using Blog.Data.Entities
+@using Blog.Services
+@inject CategoryService CategoryService
+
+<div class="container">
+  <h3>Danh Mục Bài Viết</h3>
+  <button class="btn btn-dark">
+    <i class="bi bi-plus-circle"></i>
+    Thêm Danh Mục Bài Viết
+  </button>
+
+  <hr />
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Id</th>
+        <th>Tên Danh Mục Bài Viết</th>
+        <th>Slug</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+</div>
+
+@code {
+  private IEnumerable<Category>? categories = null;
+  private bool load = false;
+
+  protected override async Task OnInitializedAsync()
+  {
+    load = true;
+
+    try
+    {
+      categories = await CategoryService.GetCategoriesAsync();
+    }
+    finally
+    {
+      load = false;
+    }
+
+  }
+
+}
