@@ -1,10 +1,15 @@
-﻿@page "/category"
+﻿@page "/admin/category"
 @using Blog.Data.Entities
 @using Blog.Services
 @inject CategoryService CategoryService
+@inject IJSRuntime JS
 
 <div class="container">
   <h3>Danh Mục Bài Viết</h3>
+  @* <button class="btn btn-dark" @onclick="AddCategoryFormAsync">
+    <i class="bi bi-plus-circle"></i>
+    Thêm Danh Mục Bài Viết
+  </button> *@
   <button class="btn btn-dark">
     <i class="bi bi-plus-circle"></i>
     Thêm Danh Mục Bài Viết
@@ -32,7 +37,7 @@
           </td>
         </tr>
       }
-      else if (!load && categories is null)
+      else if (!load && (categories is null || !categories.Any()))
       {
         <tr>
           <td colspan="4">
@@ -42,10 +47,11 @@
       }
       else
       {
+        int stt = 1;
         foreach (var item in categories)
         {
           <tr>
-            <td></td>
+            <td>@stt</td>
             <td>@item.Id</td>
             <td>@item.Name</td>
             <td>@item.Slug</td>
@@ -54,16 +60,21 @@
               <button type="button" class="btn btn-success">Sửa</button>
             </td>
           </tr>
+          stt++;
         }
       }
     </tbody>
   </table>
-
 </div>
+
+<dialog id="@categoryFormDialogId">
+  
+</dialog>
 
 @code {
   private IEnumerable<Category>? categories = null;
   private bool load = false;
+  private const string categoryFormDialogId = "category-form";
 
   protected override async Task OnInitializedAsync()
   {
@@ -79,5 +90,10 @@
     }
 
   }
+
+  // private async Task AddCategoryFormAsync()
+  // {
+  //   return await JS.InvokeVoidAsync();
+  // }
 
 }
