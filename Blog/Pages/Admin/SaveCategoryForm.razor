@@ -43,12 +43,14 @@
   [Parameter]
   public Category Category { get; set; }
 
+  [Parameter]
   public EventCallback<MethodResult> OnSaveCategory { get; set; }
 
   [Parameter]
   public EventCallback OnCloseForm { get; set; }
 
   private Category category = new();
+
   protected override void OnParametersSet()
   {
     base.OnParametersSet();

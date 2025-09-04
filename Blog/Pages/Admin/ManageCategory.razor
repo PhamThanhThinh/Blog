@@ -1,6 +1,7 @@
 ﻿@page "/admin/category"
 @using Blog.Data.Entities
 @using Blog.Services
+@using Blog.ViewModel
 @inject CategoryService CategoryService
 @inject IJSRuntime JS
 
@@ -10,7 +11,7 @@
     <i class="bi bi-plus-circle"></i>
     Thêm Danh Mục Bài Viết
   </button> *@
-  <button class="btn btn-dark">
+  <button class="btn btn-dark" @onclick="OpenCategoryFormAsync">
     <i class="bi bi-plus-circle"></i>
     Thêm Danh Mục Bài Viết
   </button>
@@ -56,8 +57,8 @@
             <td>@item.Name</td>
             <td>@item.Slug</td>
             <td>
-              @* <button type="button" class="btn btn-success" @onclick="()=>">Sửa</button> *@
-              <button type="button" class="btn btn-success">Sửa</button>
+              <button type="button" class="btn btn-success" @onclick="() => EditCategoryAsync(item)">Sửa</button>
+              @* <button type="button" class="btn btn-success">Sửa</button> *@
             </td>
           </tr>
           stt++;
@@ -68,7 +69,9 @@
 </div>
 
 <dialog id="@categoryFormDialogId">
-  
+  <SaveCategoryForm Category="entityCategory"
+                    OnSaveCategory="OnSaveCategory"
+                    OnCloseForm="CloseCategoryFormAsync" />
 </dialog>
 
 @code {
@@ -76,10 +79,11 @@
   private bool load = false;
   private const string categoryFormDialogId = "category-form";
 
+  private Category entityCategory = new();
+
   protected override async Task OnInitializedAsync()
   {
     load = true;
-
     try
     {
       categories = await CategoryService.GetCategoriesAsync();
@@ -88,12 +92,78 @@
     {
       load = false;
     }
-
+    // await LoadCategoriesAsync();
   }
+
+  // private async Task LoadCategoriesAsync()
+  // {
+  //   load = true;
+  //   try
+  //   {
+  //     categories = await CategoryService.GetCategoriesAsync();
+  //   }
+  //   finally
+  //   {
+  //     load = false;
+  //   }
+  // }
 
   // private async Task AddCategoryFormAsync()
   // {
   //   return await JS.InvokeVoidAsync();
   // }
+
+  private async Task EditCategoryAsync(Category category)
+  {
+    // entityCategory = category.Clone();
+    await OpenCategoryFormAsync();
+  }
+
+  private async Task OnSaveCategory(MethodResult methodResult)
+  {
+    if (methodResult.Status) // success
+    {
+      // thông báo lưu thành thông tin danh mục bài viết thành công
+      await AlertAsync("Lưu thành thông tin danh mục bài viết!");
+      // load lại danh sách danh mục bài viết
+      await LoadCategoriesAsync();
+      // đóng form sửa danh mục bài viết
+      await CloseCategoryFormAsync();
+    }
+    else // fail
+    {
+      // thông báo lỗi
+      await AlertAsync(methodResult.ErrorMessage);
+    }
+  }
+
+  private async Task AlertAsync(string message)
+  {
+    await JS.InvokeVoidAsync("window.alert", message);
+  }
+
+  private async Task LoadCategoriesAsync()
+  {
+    load = true;
+    try
+    {
+      categories = await CategoryService.GetCategoriesAsync();
+    }
+    finally
+    {
+      load = false;
+    }
+  }
+
+  private async Task OpenCategoryFormAsync()
+  {
+    await JS.InvokeVoidAsync("window.openModal", categoryFormDialogId);
+  }
+
+  private async Task CloseCategoryFormAsync()
+  {
+    entityCategory = new();
+    await JS.InvokeVoidAsync("window.closeModal", categoryFormDialogId);
+  }
 
 }
